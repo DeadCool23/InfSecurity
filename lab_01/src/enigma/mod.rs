@@ -19,12 +19,12 @@ impl<T: Clone + Eq + Ord> Enigma<T> {
         with_commutator: bool,
     ) -> Result<Self, &str> {
         let commutator = if with_commutator {
-            Some(Reflector::from_alphabet(alphabet)?)
+            Some(Reflector::from_alphabet(alphabet))
         } else {
             None
         };
 
-        let reflector = Reflector::from_alphabet(alphabet)?;
+        let reflector = Reflector::from_alphabet(alphabet);
         let rotors = (0..rotors_cnt)
             .map(|_| Rotor::from_alphabet(alphabet))
             .collect();
@@ -42,12 +42,12 @@ impl<T: Clone + Eq + Ord> Enigma<T> {
         rotors_configs: &'a [Vec<T>],
     ) -> Result<Self, &'a str> {
         let commutator = if let Some(cfg) = commutator_config {
-            Some(Reflector::from_config(cfg)?)
+            Some(Reflector::from_config(cfg))
         } else {
             None
         };
 
-        let reflector = Reflector::from_config(reflector_config)?;
+        let reflector = Reflector::from_config(reflector_config);
         let rotors = (0..rotors_configs.len())
             .map(|i| {
                 if i == 0 {
